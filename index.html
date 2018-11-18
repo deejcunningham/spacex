@@ -1,0 +1,102 @@
+<html>
+
+    <head>
+        <title>SpaceX Launches</title>
+        <!-- <link rel="stylesheet" href="styles/style.css"> -->
+        <link rel="stylesheet" href="styles/kendo.common.min.css" />
+        <link rel="stylesheet" href="styles/kendo.default.min.css" />
+        <link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />
+
+        <script src="js/spaceX.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/kendo.all.min.js"></script>
+    </head>
+    
+    <body>
+        <h1>SpaceX Launches</h1>
+        <h3>TODO:</h3>
+        <ol>
+            <li><a href="https://demos.telerik.com/kendo-ui/grid/index">Use Kendo UI library for grids/tables</a></li> 
+            <li>Table needs:
+                <ul>
+                    <li>Date and time of mission</li>
+                    <li>The rocket name</li>
+                    <li>A link to the cargo manifest</li>
+                    <li>Whether the launch was a success.</li>
+                </ul>
+            <li>Test with all modern web browsers: Chrome, Firefox, IE10+, Safari, Opera</li>
+            <li>Internally they use ASP.NET Web Forms and MVC, C# and jQuery very frequently.</li>
+            <li>Host it</li>
+        </ol>    
+
+        <div id="example">
+            <script>
+                $(document).ready(function () {
+                    $("#grid").kendoGrid({
+                        dataSource: {
+                            type: "odata",
+                            transport: {
+                                read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                            }
+                            pageSize: 20
+                        },
+                        height: 550,
+                        groupable: true,
+                        sortable: true,
+                        pageable: {
+                            refresh: true,
+                            pageSizes: true,
+                            burronCount: 5
+                        },
+                        columns: [{
+                            template: "div calss='customer-photo'" +
+                            "style='background-image: url(../content/web/Customers/#:data/CustomerID#.jpg);'></div>" +
+                            "<div class='customer-name'>#: ContactName #</div>",
+                            field: "ContactName",
+                            title: "Contact Name",
+                            width: 240
+                        }, {
+                            field: "ContactTitle",
+                            title: "Contact Title"
+                        }, {
+                            field: "CompanyName",
+                            title: "Company Name"
+                        }, {
+                            field: "Country",
+                            width: 150
+                        }]
+                    });
+                });
+            </script>
+        </div>
+
+        <style type="text/css">
+            .customer-photo {
+                display: inline-block;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                background-size: 32px 35px;
+                background-position: center center;
+                vertical-align: middle;
+                line-height: 32px;
+                box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+                margin-left: 5px;
+            }
+            
+            .customer-name {
+                display: inline-block;
+                vertical-align: middle;
+                line-height: 32px;
+                padding-left: 3px;
+            }
+        </style>
+
+        <aside>
+            <script>
+                getLaunch();
+            </script>
+        </aside>
+    </body>
+
+</html>
