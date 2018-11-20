@@ -18,15 +18,16 @@
             <s><li><a href="https://demos.telerik.com/kendo-ui/grid/index">Use Kendo UI library for grids/tables</a></li></s>
             <li>Table needs:
                 <ul>
-                    <li>Date and time of mission (how split the string in the json response?)</li>
+                    <s><li>Date and time of mission (how split the string in the json response?)</li></s>
+                    <s><li>Date and time of mission (how split the string in the json response?)</li></s>
                     <s><li>The rocket name</li></s>
                     <s><li>A link to the cargo manifest (where is the appropriate link in the API?)</li></s>
                     <s><li>Whether the launch was a success.</li></s>
-                    <s><li>Translate true/false success response into "yes/no"</li></s>
+                    <li>Translate true/false success response into "yes/no"</li>
                 </ul>
             <li>Host it</li>
             <li>Test with all modern web browsers: Chrome, Firefox, IE10+, Safari, Opera</li>
-            <li>Internally they use ASP.NET Web Forms and MVC, C# and jQuery very frequently. I am using jQuery with Kendo UI</li>
+            <li>Internally they use ASP.NET Web Forms and MVC, C# and jQuery very frequently. I am using Kendo UI with jQuery.</li>
         </ol>
 
         <!-- define the HTML div that will contain the Grid -->
@@ -43,11 +44,14 @@
                         field: "mission_name",
                         title: "Mission Name"
                     }, {
-                        field: "launch_date_local",
-                        title: "Launch Date"
+                        field: "launch_date_utc",
+                        title: "Launch Date",
+                        template: "#= kendo.toString(kendo.parseDate(launch_date_utc), 'D') #"
                     }, {
-                        field: "launch_date_local",
-                        title: "Launch Time"
+                        field: "launch_date_utc",
+                        title: "Launch Time",
+                        width: 150,
+                        template: "#= kendo.toString(kendo.parseDate(launch_date_utc), 'T') #"
                     }, {
                         field: "rocket.second_stage.payloads[0].payload_id",
                         field: "links.wikipedia",
