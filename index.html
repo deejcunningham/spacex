@@ -23,7 +23,7 @@
                     <s><li>The rocket name</li></s>
                     <s><li>A link to the cargo manifest (where is the appropriate link in the API?)</li></s>
                     <s><li>Whether the launch was a success.</li></s>
-                    <li>Translate true/false success response into "yes/no"</li>
+                    <s><li>Translate true/false success response into "yes/no"</li></s>
                 </ul>
             <li>Host it</li>
             <li>Test with all modern web browsers: Chrome, Firefox, IE10+, Safari, Opera</li>
@@ -39,7 +39,6 @@
                 $("#grid").kendoGrid({
                     sortable: true,
                     mobile: true,
-                    // other configuration
                     columns: [{
                         field: "mission_name",
                         title: "Mission Name"
@@ -60,7 +59,14 @@
                     }, {
                         field: "launch_success",
                         title: "Success",
-                        width: 100
+                        width: 100,
+                        template: function(dataItem) {
+                            if (dataItem.launch_success) {
+                                return "Yes";
+                            } else {
+                                return "No";
+                            }
+                        }
                     }],
                     dataSource: new kendo.data.DataSource({
                         transport: {
