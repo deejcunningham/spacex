@@ -39,7 +39,6 @@
                 $("#grid").kendoGrid({
                     sortable: true,
                     mobile: true,
-                    // other configuration
                     columns: [{
                         field: "mission_name",
                         title: "Mission Name"
@@ -60,7 +59,14 @@
                     }, {
                         field: "launch_success",
                         title: "Success",
-                        width: 100
+                        width: 100,
+                        template: function(dataItem) {
+                            if (dataItem.launch_success) {
+                                return "Yes";
+                            } else {
+                                return "No";
+                            }
+                        }
                     }],
                     dataSource: new kendo.data.DataSource({
                         transport: {
