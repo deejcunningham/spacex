@@ -52,6 +52,10 @@
                         width: 150,
                         template: "#= kendo.toString(kendo.parseDate(launch_date_utc), 'T') #"
                     }, {
+                        field: "rocket.rocket_name",
+                        title: "Rocket Name",
+                        width: 100
+                    }, {
                         field: "rocket.second_stage.payloads[0].payload_id",
                         field: "links.wikipedia",
                         title: "Cargo",
