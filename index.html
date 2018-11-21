@@ -57,9 +57,16 @@
                         width: 100
                     }, {
                         field: "rocket.second_stage.payloads[0].payload_id",
+                        field: "rocket.second_stage.payloads[0].cargo_manifest",
                         field: "links.wikipedia",
                         title: "Cargo",
-                        template: '<a href="#=links.wikipedia#">#=rocket.second_stage.payloads[0].payload_id#</a>'
+                        template: function(dataItem) {
+                            if (dataItem.rocket.second_stage.payloads[0].cargo_manifest) {
+                                return '<a href="' + dataItem.rocket.second_stage.payloads[0].cargo_manifest + '">' + dataItem.rocket.second_stage.payloads[0].payload_id + '</a>';
+                            } else {
+                                return '<a href="' + dataItem.links.wikipedia + '">' + dataItem.rocket.second_stage.payloads[0].payload_id + '</a>';
+                            }
+                        }
                     }, {
                         field: "launch_success",
                         title: "Success",
