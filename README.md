@@ -1,3 +1,5 @@
 # spacex
 
-Small project to display SpaceX launches.
+Small interview project to display SpaceX launches.
+
+No longer updated or maintained.
